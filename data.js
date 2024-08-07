@@ -45,7 +45,32 @@ var APP_DATA = {
           "yaw": 0.7935556882622912,
           "pitch": -0.043600329411017213,
           "title": "모돈자동급이기",
-          "text": "(이미지)<div><br></div><div>-</div><div><br></div><div>홈페이지1</div><div><br></div><div>제품소개1</div><div>-제품설명1</div><div><br></div><div>제품소개2</div><div>-제품설명2</div><div><br></div><div>제품소개3</div><div>-제품설명3</div>"
+          "tabs": [
+            {
+              "name": "회사A",
+              "content": {
+                "text": "회사A 제품 설명",
+                "image": "path/to/companyA_image.jpg",
+                "link": "https://companyA.com"
+              }
+            },
+            {
+              "name": "회사B",
+              "content": {
+                "text": "회사B 제품 설명",
+                "image": "path/to/companyB_image.jpg",
+                "link": "https://companyB.com"
+              }
+            },
+            {
+              "name": "회사C",
+              "content": {
+                "text": "회사C 제품 설명",
+                "image": "path/to/companyC_image.jpg",
+                "link": "https://companyC.com"
+              }
+            }
+          ]
         }
       ]
     }

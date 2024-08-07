@@ -828,3 +828,46 @@ body.view-control-buttons .viewControlButton {
 .viewControlButton-6 {
   margin-left: 105px;
 }
+
+/* Claude 1 */
+.info-hotspot-tabs {
+  display: flex;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+}
+
+.info-hotspot-tab {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.info-hotspot-tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #007bff;
+}
+
+.info-hotspot-tab-content {
+  display: none;
+  padding: 10px;
+}
+
+.info-hotspot-tab-content.active {
+  display: block;
+}
+
+.info-hotspot-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.info-hotspot-content a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.info-hotspot-content a:hover {
+  text-decoration: underline;
+}

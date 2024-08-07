@@ -286,6 +286,65 @@
 
   function createInfoHotspotElement(hotspot) {
 
+    // Claude 1
+    var tabsContainer = document.createElement('div');
+    tabsContainer.classList.add('info-hotspot-tabs');
+    
+    var contentContainer = document.createElement('div');
+    contentContainer.classList.add('info-hotspot-content');
+
+    hotspot.tabs.forEach(function(tab, index) {
+      var tabElement = document.createElement('div');
+      tabElement.classList.add('info-hotspot-tab');
+      tabElement.textContent = tab.name;
+      tabElement.addEventListener('click', function() {
+        showTabContent(index);
+      });
+      tabsContainer.appendChild(tabElement);
+
+      var contentElement = document.createElement('div');
+      contentElement.classList.add('info-hotspot-tab-content');
+      if (index === 0) contentElement.classList.add('active');
+
+      var textElement = document.createElement('p');
+      textElement.textContent = tab.content.text;
+      contentElement.appendChild(textElement);
+
+      if (tab.content.image) {
+        var imageElement = document.createElement('img');
+        imageElement.src = tab.content.image;
+        imageElement.classList.add('info-hotspot-image');
+        contentElement.appendChild(imageElement);
+      }
+
+      if (tab.content.link) {
+        var linkElement = document.createElement('a');
+        linkElement.href = tab.content.link;
+        linkElement.textContent = '자세히 보기';
+        linkElement.target = '_blank';
+        contentElement.appendChild(linkElement);
+      }
+
+      contentContainer.appendChild(contentElement);
+    });
+
+    function showTabContent(index) {
+      var contents = contentContainer.getElementsByClassName('info-hotspot-tab-content');
+      for (var i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+      }
+      contents[index].classList.add('active');
+
+      var tabs = tabsContainer.getElementsByClassName('info-hotspot-tab');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      tabs[index].classList.add('active');
+    }
+
+    wrapper.appendChild(tabsContainer);
+    wrapper.appendChild(contentContainer);
+
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
