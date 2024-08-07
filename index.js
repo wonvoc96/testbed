@@ -286,65 +286,6 @@
 
   function createInfoHotspotElement(hotspot) {
 
-    // Claude 1
-    var tabsContainer = document.createElement('div');
-    tabsContainer.classList.add('info-hotspot-tabs');
-    
-    var contentContainer = document.createElement('div');
-    contentContainer.classList.add('info-hotspot-content');
-
-    hotspot.tabs.forEach(function(tab, index) {
-      var tabElement = document.createElement('div');
-      tabElement.classList.add('info-hotspot-tab');
-      tabElement.textContent = tab.name;
-      tabElement.addEventListener('click', function() {
-        showTabContent(index);
-      });
-      tabsContainer.appendChild(tabElement);
-
-      var contentElement = document.createElement('div');
-      contentElement.classList.add('info-hotspot-tab-content');
-      if (index === 0) contentElement.classList.add('active');
-
-      var textElement = document.createElement('p');
-      textElement.textContent = tab.content.text;
-      contentElement.appendChild(textElement);
-
-      if (tab.content.image) {
-        var imageElement = document.createElement('img');
-        imageElement.src = tab.content.image;
-        imageElement.classList.add('info-hotspot-image');
-        contentElement.appendChild(imageElement);
-      }
-
-      if (tab.content.link) {
-        var linkElement = document.createElement('a');
-        linkElement.href = tab.content.link;
-        linkElement.textContent = '자세히 보기';
-        linkElement.target = '_blank';
-        contentElement.appendChild(linkElement);
-      }
-
-      contentContainer.appendChild(contentElement);
-    });
-
-    function showTabContent(index) {
-      var contents = contentContainer.getElementsByClassName('info-hotspot-tab-content');
-      for (var i = 0; i < contents.length; i++) {
-        contents[i].classList.remove('active');
-      }
-      contents[index].classList.add('active');
-
-      var tabs = tabsContainer.getElementsByClassName('info-hotspot-tab');
-      for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('active');
-      }
-      tabs[index].classList.add('active');
-    }
-
-    wrapper.appendChild(tabsContainer);
-    wrapper.appendChild(contentContainer);
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -391,6 +332,75 @@
     // Place header and text into wrapper element.
     wrapper.appendChild(header);
     wrapper.appendChild(text);
+
+    // Claude 2
+    var tabsContainer = document.createElement('div');
+    tabsContainer.classList.add('info-hotspot-tabs');
+    
+    var contentContainer = document.createElement('div');
+    contentContainer.classList.add('info-hotspot-content');
+  
+    if (hotspot.tabs && Array.isArray(hotspot.tabs)) {
+      hotspot.tabs.forEach(function(tab, index) {
+        // 탭 버튼 생성
+        var tabElement = document.createElement('div');
+        tabElement.classList.add('info-hotspot-tab');
+        tabElement.textContent = tab.name;
+        tabElement.addEventListener('click', function() {
+          showTabContent(index);
+        });
+        tabsContainer.appendChild(tabElement);
+  
+        // 탭 콘텐츠 생성
+        var contentElement = document.createElement('div');
+        contentElement.classList.add('info-hotspot-tab-content');
+        if (index === 0) contentElement.classList.add('active');
+  
+        // 텍스트 추가
+        var textElement = document.createElement('p');
+        textElement.textContent = tab.content.text;
+        contentElement.appendChild(textElement);
+  
+        // 이미지 추가 (있는 경우)
+        if (tab.content.image) {
+          var imageElement = document.createElement('img');
+          imageElement.src = tab.content.image;
+          imageElement.classList.add('info-hotspot-image');
+          contentElement.appendChild(imageElement);
+        }
+  
+        // 링크 추가 (있는 경우)
+        if (tab.content.link) {
+          var linkElement = document.createElement('a');
+          linkElement.href = tab.content.link;
+          linkElement.textContent = '자세히 보기';
+          linkElement.target = '_blank';
+          contentElement.appendChild(linkElement);
+        }
+  
+        contentContainer.appendChild(contentElement);
+      });
+  
+      // 탭 전환 함수
+      function showTabContent(index) {
+        var contents = contentContainer.getElementsByClassName('info-hotspot-tab-content');
+        for (var i = 0; i < contents.length; i++) {
+          contents[i].classList.remove('active');
+        }
+        contents[index].classList.add('active');
+  
+        var tabs = tabsContainer.getElementsByClassName('info-hotspot-tab');
+        for (var i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove('active');
+        }
+        tabs[index].classList.add('active');
+      }
+  
+      wrapper.appendChild(tabsContainer);
+      wrapper.appendChild(contentContainer);
+    } else {
+      console.error('Hotspot tabs are not defined or not an array:', hotspot);
+    }
 
     // Create a modal for the hotspot content to appear on mobile mode.
     var modal = document.createElement('div');
