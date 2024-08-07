@@ -862,7 +862,7 @@ body.view-control-buttons .viewControlButton {
 }
 
 .info-hotspot-content a {
-  display: inline-block;
+  display: none;
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
@@ -870,4 +870,16 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot-content a:hover {
   text-decoration: underline;
+}
+
+.info-hotspot.visible .info-hotspot-content {
+  display: block;
+}
+
+.info-hotspot-close-wrapper {
+  display: none;
+}
+
+.info-hotspot.visible .info-hotspot-close-wrapper {
+  display: block;
 }
