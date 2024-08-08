@@ -829,7 +829,7 @@ body.view-control-buttons .viewControlButton {
   margin-left: 105px;
 }
 
-/* 수정된 스타일 */
+/* Claude 6 */
 .info-hotspot .info-hotspot-header {
   width: 40px;
   height: 40px;
@@ -842,7 +842,7 @@ body.view-control-buttons .viewControlButton {
   width: 260px;
 }
 
-.info-hotspot .info-hotspot-text,
+.info-hotspot .info-hotspot-content,
 .info-hotspot .info-hotspot-title-wrapper,
 .info-hotspot-tabs,
 .info-hotspot-tab-content,
@@ -851,7 +851,7 @@ body.view-control-buttons .viewControlButton {
   display: none;
 }
 
-.info-hotspot.visible .info-hotspot-text,
+.info-hotspot.visible .info-hotspot-content,
 .info-hotspot.visible .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-tabs,
 .info-hotspot.visible .info-hotspot-tab-content.active,
@@ -860,7 +860,15 @@ body.view-control-buttons .viewControlButton {
   display: block;
 }
 
+.info-hotspot-content {
+  background-color: rgba(58,68,84,0.8);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 10px;
+}
+
 .info-hotspot-tabs {
+  display: flex;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
 }
@@ -897,4 +905,8 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
   display: block;
+}
+
+.info-hotspot-modal {
+  display: none;
 }

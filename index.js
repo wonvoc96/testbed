@@ -285,16 +285,15 @@
   }
 
   function createInfoHotspotElement(hotspot) {
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
     wrapper.classList.add('info-hotspot');
-
+  
     // Create hotspot/tooltip header.
     var header = document.createElement('div');
     header.classList.add('info-hotspot-header');
-
+  
     // Create image element.
     var iconWrapper = document.createElement('div');
     iconWrapper.classList.add('info-hotspot-icon-wrapper');
@@ -302,7 +301,7 @@
     icon.src = 'img/info.png';
     icon.classList.add('info-hotspot-icon');
     iconWrapper.appendChild(icon);
-
+  
     // Create title element.
     var titleWrapper = document.createElement('div');
     titleWrapper.classList.add('info-hotspot-title-wrapper');
@@ -310,7 +309,7 @@
     title.classList.add('info-hotspot-title');
     title.innerHTML = hotspot.title;
     titleWrapper.appendChild(title);
-
+  
     // Create close element.
     var closeWrapper = document.createElement('div');
     closeWrapper.classList.add('info-hotspot-close-wrapper');
@@ -318,31 +317,22 @@
     closeIcon.src = 'img/close.png';
     closeIcon.classList.add('info-hotspot-close-icon');
     closeWrapper.appendChild(closeIcon);
-
+  
     // Construct header element.
     header.appendChild(iconWrapper);
     header.appendChild(titleWrapper);
     header.appendChild(closeWrapper);
-
-    // Create text element.
-    var text = document.createElement('div');
-    text.classList.add('info-hotspot-text');
-    text.innerHTML = hotspot.text;
-
-    // Place header and text into wrapper element.
-    wrapper.appendChild(header);
-    wrapper.appendChild(text);
-
-    // Claude 2
+  
+    // Create content element.
+    var content = document.createElement('div');
+    content.classList.add('info-hotspot-content');
+  
+    // Create tabs
     var tabsContainer = document.createElement('div');
     tabsContainer.classList.add('info-hotspot-tabs');
-    
-    var contentContainer = document.createElement('div');
-    contentContainer.classList.add('info-hotspot-content');
   
     if (hotspot.tabs && Array.isArray(hotspot.tabs)) {
       hotspot.tabs.forEach(function(tab, index) {
-        // 탭 버튼 생성
         var tabElement = document.createElement('div');
         tabElement.classList.add('info-hotspot-tab');
         tabElement.textContent = tab.name;
@@ -351,17 +341,14 @@
         });
         tabsContainer.appendChild(tabElement);
   
-        // 탭 콘텐츠 생성
         var contentElement = document.createElement('div');
         contentElement.classList.add('info-hotspot-tab-content');
         if (index === 0) contentElement.classList.add('active');
   
-        // 텍스트 추가
         var textElement = document.createElement('p');
         textElement.textContent = tab.content.text;
         contentElement.appendChild(textElement);
   
-        // 이미지 추가 (있는 경우)
         if (tab.content.image) {
           var imageElement = document.createElement('img');
           imageElement.src = tab.content.image;
@@ -369,7 +356,6 @@
           contentElement.appendChild(imageElement);
         }
   
-        // 링크 추가 (있는 경우)
         if (tab.content.link) {
           var linkElement = document.createElement('a');
           linkElement.href = tab.content.link;
@@ -378,12 +364,11 @@
           contentElement.appendChild(linkElement);
         }
   
-        contentContainer.appendChild(contentElement);
+        content.appendChild(contentElement);
       });
   
-      // 탭 전환 함수
       function showTabContent(index) {
-        var contents = contentContainer.getElementsByClassName('info-hotspot-tab-content');
+        var contents = content.getElementsByClassName('info-hotspot-tab-content');
         for (var i = 0; i < contents.length; i++) {
           contents[i].classList.remove('active');
         }
@@ -395,34 +380,35 @@
         }
         tabs[index].classList.add('active');
       }
-  
-      wrapper.appendChild(tabsContainer);
-      wrapper.appendChild(contentContainer);
-    } else {
-      console.error('Hotspot tabs are not defined or not an array:', hotspot);
     }
-
+  
+    content.insertBefore(tabsContainer, content.firstChild);
+  
+    // Place header and content into wrapper element.
+    wrapper.appendChild(header);
+    wrapper.appendChild(content);
+  
     // Create a modal for the hotspot content to appear on mobile mode.
     var modal = document.createElement('div');
     modal.innerHTML = wrapper.innerHTML;
     modal.classList.add('info-hotspot-modal');
     document.body.appendChild(modal);
-
+  
     var toggle = function() {
       wrapper.classList.toggle('visible');
       modal.classList.toggle('visible');
     };
-
+  
     // Show content when hotspot is clicked.
     wrapper.querySelector('.info-hotspot-header').addEventListener('click', toggle);
-
+  
     // Hide content when close icon is clicked.
     modal.querySelector('.info-hotspot-close-wrapper').addEventListener('click', toggle);
-
+  
     // Prevent touch and scroll events from reaching the parent element.
     // This prevents the view control logic from interfering with the hotspot.
     stopTouchAndScrollEventPropagation(wrapper);
-
+  
     return wrapper;
   }
 
