@@ -509,7 +509,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   position: absolute;
   left: 40px;
   top: 0;
-  width: 0;
+  width: 286px;
   height: 40px;
   padding: 0;
   overflow: hidden;
@@ -547,6 +547,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-close-wrapper {
+  display: none;
   position: absolute;
   left: 260px;
   top: 0;
@@ -836,7 +837,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  width: 260px;
+  width: 338px;
   border-radius: 5px;
 }
 
