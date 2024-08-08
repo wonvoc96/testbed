@@ -835,7 +835,7 @@ body.view-control-buttons .viewControlButton {
 }
 
 .info-hotspot .info-hotspot-header {
-  width: 200px;
+  width: 40px;
   height: 40px;
   border-radius: 20px;
   background-color: rgb(103,115,131);
@@ -845,7 +845,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  width: 260px;
+  width: 320px;
   border-radius: 5px;
 }
 
