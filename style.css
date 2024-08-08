@@ -829,9 +829,38 @@ body.view-control-buttons .viewControlButton {
   margin-left: 105px;
 }
 
-/* Claude 1 */
-.info-hotspot-tabs {
+/* 수정된 스타일 */
+.info-hotspot .info-hotspot-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(103,115,131);
+  transition: width 0.3s ease-in-out;
+}
+
+.info-hotspot:hover .info-hotspot-header {
+  width: 260px;
+}
+
+.info-hotspot .info-hotspot-text,
+.info-hotspot .info-hotspot-title-wrapper,
+.info-hotspot-tabs,
+.info-hotspot-tab-content,
+.info-hotspot-image,
+.info-hotspot-content a {
   display: none;
+}
+
+.info-hotspot.visible .info-hotspot-text,
+.info-hotspot.visible .info-hotspot-title-wrapper,
+.info-hotspot.visible .info-hotspot-tabs,
+.info-hotspot.visible .info-hotspot-tab-content.active,
+.info-hotspot.visible .info-hotspot-image,
+.info-hotspot.visible .info-hotspot-content a {
+  display: block;
+}
+
+.info-hotspot-tabs {
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
 }
@@ -846,15 +875,6 @@ body.view-control-buttons .viewControlButton {
   border-bottom: 2px solid #007bff;
 }
 
-.info-hotspot-tab-content {
-  display: none;
-  padding: 10px;
-}
-
-.info-hotspot-tab-content.active {
-  display: block;
-}
-
 .info-hotspot-image {
   max-width: 100%;
   height: auto;
@@ -862,7 +882,6 @@ body.view-control-buttons .viewControlButton {
 }
 
 .info-hotspot-content a {
-  display: none;
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
@@ -872,27 +891,7 @@ body.view-control-buttons .viewControlButton {
   text-decoration: underline;
 }
 
-.info-hotspot .info-hotspot-text {
-  display: none;
-}
-
-.info-hotspot.visible .info-hotspot-text {
-  display: block;
-}
-
-.info-hotspot.visible .info-hotspot-tabs {
-  display: flex;
-}
-
-.info-hotspot .info-hotspot-title-wrapper {
-  display: none;
-}
-
-.info-hotspot.visible .info-hotspot-title-wrapper {
-  display: block;
-}
-
-.info-hotspot-close-wrapper {
+.info-hotspot .info-hotspot-close-wrapper {
   display: none;
 }
 
