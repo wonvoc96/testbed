@@ -450,15 +450,16 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-header {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 26px;
   background-color: rgb(103,115,131);
   cursor: pointer;
   -webkit-transition: width 0.3s ease-in-out 0.5s,
                       border-radius 0.3s ease-in-out 0.5s;
-  transition: width 0.3s ease-in-out 0.5s,
-              border-radius 0.3s ease-in-out 0.5s;
+  transition: width 0.3s ease-in-out,
+              border-radius 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .mobile .info-hotspot .info-hotspot-header {
@@ -507,10 +508,10 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 
 .info-hotspot .info-hotspot-title-wrapper {
   position: absolute;
-  left: 40px;
+  left: 52px;
   top: 0;
-  width: 0;
-  height: 40px;
+  width: 286px;
+  height: 52px;
   padding: 0;
   overflow: hidden;
   -webkit-transition: width 0s 0.4s,
@@ -547,9 +548,11 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-close-wrapper {
+  display: none;
   position: absolute;
   left: 260px;
-  top: 0;
+  right: 5px;
+  top: 50%;
   height: 40px;
   width: 40px;
   border-top-right-radius: 5px;
@@ -557,7 +560,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   visibility: hidden;
   -ms-transform: perspective(200px) rotateY(90deg);
   -webkit-transform: perspective(200px) rotateY(90deg);
-  transform: perspective(200px) rotateY(90deg);
+  transform: translateY(-50%)
   -ms-transform-origin: 0 50% 0;
   -webkit-transform-origin: 0 50% 0;
   transform-origin: 0 50% 0;
@@ -835,9 +838,9 @@ body.view-control-buttons .viewControlButton {
 }
 
 .info-hotspot .info-hotspot-header {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 52px; /* 40px에서 30% 증가 */
+  height: 52px; /* 40px에서 30% 증가 */
+  border-radius: 26px;
   background-color: rgb(103,115,131);
   transition: all 0.3s ease-in-out;
   overflow: hidden;
@@ -845,17 +848,16 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  width: 260px;
+  width: 338px; /* 260px에서 30% 증가 */
   border-radius: 5px;
 }
 
-.info-hotspot .info-hotspot-title-wrapper {
+.info-hotspot .info-hotspot-close-wrapper {
   display: none;
   position: absolute;
-  left: 40px;
-  top: 0;
-  width: 220px;
-  height: 40px;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .info-hotspot:hover .info-hotspot-title-wrapper,
@@ -876,17 +878,10 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
   display: block;
-  position: absolute;
-  right: 5px;
-  top: 5px;
 }
 
 .info-hotspot .info-hotspot-content {
-  display: none;
-  background-color: rgba(58,68,84,0.8);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 10px;
+  width: 338px; /* 260px에서 30% 증가 */
 }
 
 .info-hotspot.visible .info-hotspot-content {
@@ -895,18 +890,24 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot-tabs {
   display: flex;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
+  justify-content: space-around;
+  background-color: transparent;
+  border-bottom: none;
+  margin-bottom: 10px;
 }
 
 .info-hotspot-tab {
-  padding: 10px;
+  padding: 5px 15px;
   cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .info-hotspot-tab.active {
-  background-color: #fff;
-  border-bottom: 2px solid #007bff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #fff;
 }
 
 .info-hotspot-tab-content {
