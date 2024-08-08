@@ -573,6 +573,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .desktop .info-hotspot.visible .info-hotspot-close-wrapper {
+  display: block;
   visibility: visible;
   -ms-transform: perspective(200px) rotateY(0deg);
   -webkit-transform: perspective(200px) rotateY(0deg);
@@ -855,6 +856,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot .info-hotspot-content {
   display: none;
+  width: 338px;
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -867,18 +869,24 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot-tabs {
   display: flex;
+  justify-content: space-around;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
 }
 
 .info-hotspot-tab {
-  padding: 10px;
+  padding: 5px 15px;
   cursor: pointer;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  color: #fff;
+  transition: all 0.3s ease;
 }
 
 .info-hotspot-tab.active {
-  background-color: #fff;
-  border-bottom: 2px solid #007bff;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #ffffff;
 }
 
 .info-hotspot-tab-content {
