@@ -450,8 +450,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-header {
-  width: 100%;
-  box-sizing: border-box;
+  width: 40px;
   height: 40px;
   border-radius: 20px;
   background-color: rgb(103,115,131);
@@ -796,11 +795,7 @@ body.view-control-buttons .viewControlButton {
 }
 
 /* Hide controls when width is too small */
-@media (max-width: 768px) {
-  .info-hotspot-content {
-    width: 100%; /* Full width on smaller screens */
-    min-width: 250px; /* Adjust minimum width for small devices */
-  }
+@media (max-width: 600px) {
   body.view-control-buttons .viewControlButton {
     display: none;
   }
@@ -837,6 +832,15 @@ body.view-control-buttons .viewControlButton {
 /* Claude 6 */
 .info-hotspot {
   transition: all 0.3s ease-in-out;
+}
+
+.info-hotspot .info-hotspot-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(103,115,131);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .info-hotspot:hover .info-hotspot-header,
@@ -883,10 +887,6 @@ body.view-control-buttons .viewControlButton {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 10px;
-  width: 130%;
-  min-width: 300px;
-  max-width: 600px;
-  box-sizing: border-box;
 }
 
 .info-hotspot.visible .info-hotspot-content {
