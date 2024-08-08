@@ -455,10 +455,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   border-radius: 20px;
   background-color: rgb(103,115,131);
   cursor: pointer;
-  -webkit-transition: width 0.3s ease-in-out 0.5s,
-                      border-radius 0.3s ease-in-out 0.5s;
-  transition: width 0.3s ease-in-out 0.5s,
-              border-radius 0.3s ease-in-out 0.5s;
+  transition: all 0.3s ease-in-out;
 }
 
 .mobile .info-hotspot .info-hotspot-header {
@@ -509,14 +506,11 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   position: absolute;
   left: 40px;
   top: 0;
-  width: 286px;
+  width: 0;
   height: 40px;
   padding: 0;
   overflow: hidden;
-  -webkit-transition: width 0s 0.4s,
-                      padding 0s 0.4s;
-  transition: width 0s 0.4s,
-              padding 0s 0.4s;
+  transition: all 0.3s ease-in-out;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-title-wrapper,
@@ -844,7 +838,8 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-title-wrapper {
-  display: block;
+  width: 298px;
+  padding: 0 5px;
 }
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
