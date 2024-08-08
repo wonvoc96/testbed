@@ -830,67 +830,41 @@ body.view-control-buttons .viewControlButton {
 }
 
 /* Claude 6 */
-.info-hotspot {
-  transition: all 0.3s ease-in-out;
-}
-
 .info-hotspot .info-hotspot-header {
   width: 40px;
   height: 40px;
   border-radius: 20px;
   background-color: rgb(103,115,131);
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
+  transition: width 0.3s ease-in-out;
 }
 
-.info-hotspot:hover .info-hotspot-header,
-.info-hotspot.visible .info-hotspot-header {
+.info-hotspot:hover .info-hotspot-header {
   width: 260px;
-  border-radius: 5px;
 }
 
-.info-hotspot .info-hotspot-title-wrapper {
+.info-hotspot .info-hotspot-content,
+.info-hotspot .info-hotspot-title-wrapper,
+.info-hotspot-tabs,
+.info-hotspot-tab-content,
+.info-hotspot-image,
+.info-hotspot-content a {
   display: none;
-  position: absolute;
-  left: 40px;
-  top: 0;
-  width: 220px;
-  height: 40px;
 }
 
-.info-hotspot:hover .info-hotspot-title-wrapper,
-.info-hotspot.visible .info-hotspot-title-wrapper {
+.info-hotspot.visible .info-hotspot-content,
+.info-hotspot.visible .info-hotspot-title-wrapper,
+.info-hotspot.visible .info-hotspot-tabs,
+.info-hotspot.visible .info-hotspot-tab-content.active,
+.info-hotspot.visible .info-hotspot-image,
+.info-hotspot.visible .info-hotspot-content a {
   display: block;
 }
 
-.info-hotspot .info-hotspot-title {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-}
-
-.info-hotspot .info-hotspot-close-wrapper {
-  display: none;
-}
-
-.info-hotspot.visible .info-hotspot-close-wrapper {
-  display: block;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
-
-.info-hotspot .info-hotspot-content {
-  display: none;
+.info-hotspot-content {
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   padding: 10px;
-}
-
-.info-hotspot.visible .info-hotspot-content {
-  display: block;
 }
 
 .info-hotspot-tabs {
@@ -909,14 +883,6 @@ body.view-control-buttons .viewControlButton {
   border-bottom: 2px solid #007bff;
 }
 
-.info-hotspot-tab-content {
-  display: none;
-}
-
-.info-hotspot-tab-content.active {
-  display: block;
-}
-
 .info-hotspot-image {
   max-width: 100%;
   height: auto;
@@ -924,7 +890,6 @@ body.view-control-buttons .viewControlButton {
 }
 
 .info-hotspot-content a {
-  display: inline-block;
   margin-top: 10px;
   color: #007bff;
   text-decoration: none;
@@ -932,4 +897,16 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot-content a:hover {
   text-decoration: underline;
+}
+
+.info-hotspot .info-hotspot-close-wrapper {
+  display: none;
+}
+
+.info-hotspot.visible .info-hotspot-close-wrapper {
+  display: block;
+}
+
+.info-hotspot-modal {
+  display: none;
 }
