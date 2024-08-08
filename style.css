@@ -543,27 +543,17 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .info-hotspot .info-hotspot-close-wrapper {
   display: none;
   position: absolute;
-  left: 260px;
-  top: 0;
-  height: 40px;
-  width: 40px;
-  border-top-right-radius: 5px;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
   background-color: rgb(78,88,104);
   visibility: hidden;
-  -ms-transform: perspective(200px) rotateY(90deg);
-  -webkit-transform: perspective(200px) rotateY(90deg);
   transform: perspective(200px) rotateY(90deg);
-  -ms-transform-origin: 0 50% 0;
-  -webkit-transform-origin: 0 50% 0;
   transform-origin: 0 50% 0;
-  -webkit-transition: -ms-transform 0.3s 0.3s,
-                      -webkit-transform 0.3s 0.3s,
-                      transform 0.3s 0.3s,
-                      visibility 0s 0.6s;
-  transition: -ms-transform 0.3s 0.3s,
-              -webkit-transform 0.3s 0.3s,
-              transform 0.3s 0.3s,
-              visibility 0s 0.6s;
+  transition: transform 0.3s 0.3s, visibility 0s 0.6s;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-close-wrapper {
@@ -832,26 +822,28 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  width: 338px;
+  width: 100%;
+  max-width: 338px;
   border-radius: 5px;
 }
 
 .info-hotspot:hover .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-title-wrapper {
-  width: 298px;
+  width: calc(100% - 45px);
   padding: 0 5px;
 }
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
   display: block;
-  position: absolute;
-  right: 5px;
-  top: 5px;
+  visibility: visible;
+  transform: perspective(200px) rotateY(0deg);
+  transition: transform 0.3s, visibility 0s 0s;
 }
 
 .info-hotspot .info-hotspot-content {
   display: none;
-  width: 338px;
+  width: 100%;
+  max-width: 338px;
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
