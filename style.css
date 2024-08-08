@@ -834,44 +834,15 @@ body.view-control-buttons .viewControlButton {
   transition: all 0.3s ease-in-out;
 }
 
-.info-hotspot .info-hotspot-header {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  background-color: rgb(103,115,131);
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-}
-
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
   width: 260px;
   border-radius: 5px;
 }
 
-.info-hotspot .info-hotspot-title-wrapper {
-  display: none;
-  position: absolute;
-  left: 40px;
-  top: 0;
-  width: 600px;
-  height: 40px;
-}
-
 .info-hotspot:hover .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-title-wrapper {
   display: block;
-}
-
-.info-hotspot .info-hotspot-title {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-}
-
-.info-hotspot .info-hotspot-close-wrapper {
-  display: none;
 }
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
