@@ -869,7 +869,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot-tabs {
   display: flex;
-  justify-content: space-around;
+  justify-content: start;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
   margin-bottom: 10px;
