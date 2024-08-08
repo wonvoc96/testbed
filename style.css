@@ -831,7 +831,7 @@ body.view-control-buttons .viewControlButton {
 
 /* Claude 1 */
 .info-hotspot-tabs {
-  display: flex;
+  display: none;
   background-color: #f0f0f0;
   border-bottom: 1px solid #ccc;
 }
@@ -872,7 +872,23 @@ body.view-control-buttons .viewControlButton {
   text-decoration: underline;
 }
 
-.info-hotspot.visible .info-hotspot-content {
+.info-hotspot .info-hotspot-text {
+  display: none;
+}
+
+.info-hotspot.visible .info-hotspot-text {
+  display: block;
+}
+
+.info-hotspot.visible .info-hotspot-tabs {
+  display: flex;
+}
+
+.info-hotspot .info-hotspot-title-wrapper {
+  display: none;
+}
+
+.info-hotspot.visible .info-hotspot-title-wrapper {
   display: block;
 }
 
