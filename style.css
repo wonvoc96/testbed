@@ -857,15 +857,15 @@ body.view-control-buttons .viewControlButton {
 .info-hotspot-tabs {
   display: flex;
   justify-content: start;
-  background-color: #ff0000;
-  border-bottom: 1px solid #3700ff;
+  background-color: transparent;
+  border-bottom: transparent;
   margin-bottom: 10px;
 }
 
 .info-hotspot-tab {
   padding: 5px 15px;
   cursor: pointer;
-  border: 1px solid #eeff00;
+  border: 2px solid #ffffff;
   border-radius: 20px;
   color: #006905;
   transition: all 0.3s ease;
