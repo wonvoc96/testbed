@@ -217,7 +217,6 @@
   }
 
   function createLinkHotspotElement(hotspot) {
-
     // Create wrapper element to hold icon and tooltip.
     var wrapper = document.createElement('div');
     wrapper.classList.add('hotspot');
@@ -266,9 +265,11 @@
     var header = document.createElement('div');
     header.classList.add('info-hotspot-header');
 
-    // Icon
+    // Icon wrapper
     var iconWrapper = document.createElement('div');
     iconWrapper.classList.add('info-hotspot-icon-wrapper');
+
+    // Icon
     var icon = document.createElement('img');
     icon.src = 'img/info.png';
     icon.classList.add('info-hotspot-icon');
@@ -282,7 +283,7 @@
     title.innerHTML = hotspot.title;
     titleWrapper.appendChild(title);
 
-    // Close Button
+    // Close icon
     var closeWrapper = document.createElement('div');
     closeWrapper.classList.add('info-hotspot-close-wrapper');
     var closeIcon = document.createElement('img');
@@ -290,51 +291,132 @@
     closeIcon.classList.add('info-hotspot-close-icon');
     closeWrapper.appendChild(closeIcon);
 
+    // Construct header element
     header.appendChild(iconWrapper);
     header.appendChild(titleWrapper);
     header.appendChild(closeWrapper);
 
-    // Content
+    // Create content element
     var content = document.createElement('div');
     content.classList.add('info-hotspot-content');
 
-    // Tabs
-    var tabsContainer = document.createElement('div');
-    tabsContainer.classList.add('info-hotspot-tabs');
-
-    hotspot.tabs.forEach(function(tab, index) {
-      var tabElement = document.createElement('button');
+    // Create tabs
+    var tabsElement = document.createElement('div');
+    tabsElement.classList.add('info-hotspot-tabs');
+    
+    hotspot.tabs.forEach(function(tab, idx) {
+      var tabElement = document.createElement('div');
       tabElement.classList.add('info-hotspot-tab');
       tabElement.textContent = tab.name;
       tabElement.addEventListener('click', function() {
-        showTabContent(index);
+        activateTab(idx);
       });
-      tabsContainer.appendChild(tabElement);
+      tabsElement.appendChild(tabElement);
+    });
 
-      var contentElement = document.createElement('div');
-      contentElement.classList.add('info-hotspot-tab-content');
-      if (index === 0) {
-        contentElement.classList.add('active');
-        tabElement.classList.add('active');
-      }
+    content.appendChild(tabsElement);
 
-      var textElement = document.createElement('p');
-      textElement.textContent = tab.content.text;
-      contentElement.appendChild(textElement);
+    // Create content
+    hotspot.tabs.forEach(function(tab, idx) {
+      var tabContent = document.createElement('div');
+      tabContent.classList.add('info-hotspot-tab-content');
+      if (idx === 0) tabContent.classList.add('active');
+
+      var tabContentText = document.createElement('p');
+      tabContentText.textContent = tab.content.text;
+      tabContent.appendChild(tabContentText);
 
       if (tab.content.image) {
-        var imageElement = document.createElement('img');
-        imageElement.src = tab.content.image;
-        imageElement.classList.add('info-hotspot-image');
-        contentElement.appendChild(imageElement);
+        var tabContentImage = document.createElement('img');
+        tabContentImage.src = tab.content.image;
+        tabContentImage.classList.add('info-hotspot-image');
+        tabContent.appendChild(tabContentImage);
       }
 
       if (tab.content.link) {
-        var linkElement = document.createElement('a');
-        linkElement.href = tab.content.link;
-        linkElement.textContent = '자세히 보기';
-        linkElement.target = '_blank';
-        contentElement.appendChild(linkElement);
+        var tabContentLink = document.createElement('a');
+        tabContentLink.href = tab.content.link;
+        tabContentLink.textContent = '자세히 보기';
+        tabContentLink.target = '_blank';
+        tabContent.appendChild(tabContentLink);
       }
 
-      content.
+      content.appendChild(tabContent);
+    });
+
+    // Construct element
+    wrapper.appendChild(header);
+    wrapper.appendChild(content);
+
+    // Set click event handler
+    wrapper.addEventListener('click', toggle);
+
+    // Show content when clicked
+    function toggle() {
+      wrapper.classList.toggle('visible');
+      if (wrapper.classList.contains('visible')) {
+        hideAllInfoHotspotContent();
+        showInfoHotspotContent(wrapper);
+      }
+    }
+
+    // Hide content when close icon is clicked
+    closeWrapper.addEventListener('click', function(e) {
+      e.stopPropagation();
+      wrapper.classList.remove('visible');
+    });
+
+    function activateTab(tabIndex) {
+      // Remove active class from all tabs
+      var tabs = tabsElement.querySelectorAll('.info-hotspot-tab');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+      }
+      
+      // Add active class to clicked tab
+      tabs[tabIndex].classList.add('active');
+
+      // Hide all tab contents
+      var tabContents = content.querySelectorAll('.info-hotspot-tab-content');
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove('active');
+      }
+      
+      // Show clicked tab content
+      tabContents[tabIndex].classList.add('active');
+    }
+
+    // Prevent touch and scroll events from reaching the parent element.
+    // This prevents the view control logic from interfering with the hotspot.
+    stopTouchAndScrollEventPropagation(wrapper);
+
+    return wrapper;
+  }
+
+  // Hide all info hotspot content
+  function hideAllInfoHotspotContent() {
+    var hotspots = document.querySelectorAll('.info-hotspot');
+    for (var i = 0; i < hotspots.length; i++) {
+      hotspots[i].classList.remove('visible');
+    }
+  }
+
+  // Show info hotspot content
+  function showInfoHotspotContent(hotspot) {
+    hotspot.classList.add('visible');
+  }
+
+  // Prevent touch and scroll events from reaching the parent element.
+  function stopTouchAndScrollEventPropagation(element) {
+    var eventList = ['touchstart', 'touchmove', 'touchend', 'touchcancel',
+                     'wheel', 'mousewheel'];
+    for (var i = 0; i < eventList.length; i++) {
+      element.addEventListener(eventList[i], function(event) {
+        event.stopPropagation();
+      });
+    }
+  }
+
+  function findSceneById(id) {
+    for (var i = 0; i < scenes.length; i++) {
+      if (scenes[
