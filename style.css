@@ -867,7 +867,7 @@ body.view-control-buttons .viewControlButton {
   cursor: pointer;
   border: 2px solid #ffffff;
   border-radius: 20px;
-  color: #006905;
+  color: 2px #ffffff;
   transition: all 0.3s ease;
 }
 
