@@ -534,12 +534,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-title {
-  display: inline-block;
-  vertical-align: middle;
-  -moz-user-select: text;
-  -webkit-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
+  font-size: 14px;
 }
 
 .info-hotspot .info-hotspot-close-wrapper {
@@ -817,12 +812,12 @@ body.view-control-buttons .viewControlButton {
 
 /* Claude 6 */
 .info-hotspot {
-  transition: all 0.3s ease-in-out;
+  width: 338px;
 }
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  max-width: 100%;
+  width: 338px;
   border-radius: 5px;
 }
 
@@ -841,7 +836,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot .info-hotspot-content {
   display: none;
-  width: 100%;
+  width: 338px;
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
