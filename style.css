@@ -531,6 +531,15 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   font-size: 14px;
 }
 
+.info-hotspot .info-hotspot-icon-wrapper,
+.info-hotspot .info-hotspot-title-wrapper,
+.info-hotspot .info-hotspot-close-wrapper {
+  height: 100%; /* 부모 요소의 높이에 맞춤 */
+  display: flex;
+  align-items: center;
+}
+
+/*
 .info-hotspot .info-hotspot-close-wrapper {
   width: 40px;
   height: 40px;
@@ -540,6 +549,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+*/
 
 .info-hotspot:hover .info-hotspot-close-wrapper,
 .info-hotspot.visible .info-hotspot-close-wrapper {
