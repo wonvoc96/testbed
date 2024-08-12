@@ -456,6 +456,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   background-color: rgb(103,115,131);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .mobile .info-hotspot .info-hotspot-header {
@@ -489,6 +492,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .info-hotspot .info-hotspot-icon-wrapper {
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
 }
 
 .mobile .info-hotspot .info-hotspot-icon-wrapper {
@@ -503,13 +507,11 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-title-wrapper {
-  position: absolute;
-  left: 40px;
-  top: 0;
   width: 0;
   height: 40px;
   padding: 0;
   overflow: hidden;
+  white-space: nowrap;
   transition: all 0.3s ease-in-out;
 }
 
@@ -541,19 +543,18 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-close-wrapper {
-  display: none;
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: rgb(78,88,104);
-  visibility: hidden;
-  transform: perspective(200px) rotateY(90deg);
-  transform-origin: 0 50% 0;
-  transition: transform 0.3s 0.3s, visibility 0s 0.6s;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.info-hotspot:hover .info-hotspot-close-wrapper,
+.info-hotspot.visible .info-hotspot-close-wrapper {
+  opacity: 1;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-close-wrapper {
@@ -575,7 +576,6 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .info-hotspot .info-hotspot-close-icon {
   width: 70%;
   height: 70%;
-  margin: 15%;
 }
 
 .info-hotspot .info-hotspot-text {
@@ -822,15 +822,14 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  width: 100%;
   max-width: 338px;
   border-radius: 5px;
 }
 
 .info-hotspot:hover .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-title-wrapper {
-  width: calc(100% - 45px);
-  padding: 0 5px;
+  width: 253px;
+  padding: 0 10px;
 }
 
 .info-hotspot.visible .info-hotspot-close-wrapper {
@@ -842,8 +841,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot .info-hotspot-content {
   display: none;
-  width: 100%;
-  max-width: 338px;
+  width: 338px;
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
