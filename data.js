@@ -2,7 +2,7 @@ var APP_DATA = {
   "scenes": [
     {
       "id": "0-testbed",
-      "name": "TESTBED",
+      "name": "공간A",
       "levels": [
         {
           "tileSize": 256,
@@ -37,7 +37,7 @@ var APP_DATA = {
           "yaw": 1.5653987281424273,
           "pitch": -0.0026105623035235226,
           "rotation": 0,
-          "target": "0-testbed"
+          "target": "1-space-b"
         }
       ],
       "infoHotspots": [
@@ -73,6 +73,21 @@ var APP_DATA = {
           ]
         }
       ]
+    },
+    {
+      "id": "1-space-b",
+      "name": "공간B",
+      // ... (다른 공간에 대한 정보도 동일한 형식으로 추가)
+    },
+    {
+      "id": "2-space-c",
+      "name": "공간C",
+      // ...
+    },
+    {
+      "id": "3-space-d",
+      "name": "공간D",
+      // ...
     }
   ],
   "name": "Project Title",
