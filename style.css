@@ -490,6 +490,9 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .mobile .info-hotspot .info-hotspot-icon-wrapper {
@@ -498,9 +501,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-icon {
-  width: 90%;
-  height: 90%;
-  margin: 5%;
+  width: 80%;
+  height: 80%;
 }
 
 .info-hotspot .info-hotspot-title-wrapper {
@@ -510,6 +512,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   overflow: hidden;
   white-space: nowrap;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
 }
 
 .desktop .info-hotspot.visible .info-hotspot-title-wrapper,
@@ -532,7 +536,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 .info-hotspot .info-hotspot-title {
   display: inline-block;
   vertical-align: middle;
-
+  font-size: 14px;
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
@@ -571,8 +575,8 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
 }
 
 .info-hotspot .info-hotspot-close-icon {
-  width: 70%;
-  height: 70%;
+  width: 60%;
+  height: 60%;
 }
 
 .info-hotspot .info-hotspot-text {
@@ -825,7 +829,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-title-wrapper,
 .info-hotspot.visible .info-hotspot-title-wrapper {
-  width: 253px;
+  width: calc(100% - 80px);
   padding: 0 10px;
 }
 
@@ -838,7 +842,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot .info-hotspot-content {
   display: none;
-  width: 338px;
+  width: 100%;
   background-color: rgba(58,68,84,0.8);
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
