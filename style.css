@@ -819,7 +819,7 @@ body.view-control-buttons .viewControlButton {
 
 .info-hotspot:hover .info-hotspot-header,
 .info-hotspot.visible .info-hotspot-header {
-  max-width: 338px;
+  max-width: 100%;
   border-radius: 5px;
 }
 
